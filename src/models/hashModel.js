@@ -6,6 +6,9 @@ const hashSchema = new mongoose.Schema({
   userId: {
     type: objectId,
   },
+  items: {
+    type: Array,
+  },
 });
 
 const hashModel = mongoose.model("hash", hashSchema);
