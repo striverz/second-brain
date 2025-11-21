@@ -5,8 +5,11 @@ const { authUser } = require("../middlewares/authUser");
 const { ValidationTypes } = require("../utils/validation");
 
 contentController.post("/content", authUser, async (req, res) => {
-  const { title, link, type, tags } = req.body;
   try {
+    const { title, link, type, tags } = req.body;
+
+    if (!ValidationTypes(type)) throw new Error("Posting type is Invalid");
+
     await ContentModel.create({
       title,
       link,
