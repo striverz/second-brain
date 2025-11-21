@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const authUser = async (req, res, next) => {
   try {
     const { token } = req.cookies;
-    if (!token) throw new Error("Invalid Token");
+    if (!token) throw new Error("Invalid Token Please login.!");
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.userId = decoded.id;
     next();
